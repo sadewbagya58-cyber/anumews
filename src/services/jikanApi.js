@@ -1,10 +1,10 @@
 const BASE_URL = 'https://api.jikan.moe/v4';
 
-export const fetchTopAiringAnime = async (limit = 24) => {
+export const fetchJJKAnime = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/top/anime?filter=airing&limit=${limit}`);
+    const response = await fetch(`${BASE_URL}/anime?q=Jujutsu Kaisen&limit=12&order_by=start_date&sort=asc`);
     if (!response.ok) {
-      throw new Error('Failed to fetch top airing anime');
+      throw new Error('Failed to fetch JJK anime');
     }
     const data = await response.json();
     return data.data;

@@ -5,7 +5,7 @@ import { fetchAnimeDetails } from '../services/jikanApi';
 const SERVERS = [
   { name: 'Server 1 (Primary)', id: 'vidsrc.to', url: 'https://vidsrc.to/embed/anime/' },
   { name: 'Server 2 (High Speed)', id: 'vidsrc.xyz', url: 'https://vidsrc.xyz/embed/anime/' },
-  { name: 'Server 3 (Multi-Source)', id: 'vidsrc.cc', url: 'https://vidsrc.cc/v2/embed/anime/' },
+  { name: 'Server 3 (SeekStreaming Affiliate)', id: 'seekstreaming', url: 'https://play.anumews.seekplays.online/#jmnqj' },
   { name: 'Server 4 (Backup)', id: 'anyembed.to', url: 'https://anyembed.to/embed/anime/' },
 ];
 
@@ -15,7 +15,7 @@ const Watch = () => {
   const [loading, setLoading] = useState(true);
   const [iframeLoading, setIframeLoading] = useState(true);
   const [currentEpisode, setCurrentEpisode] = useState(1);
-  const [activeServer, setActiveServer] = useState(SERVERS[0]);
+  const [activeServer, setActiveServer] = useState(SERVERS.find(s => s.id === 'seekstreaming') || SERVERS[0]);
   const [customAffiliateUrl, setCustomAffiliateUrl] = useState('');
   
   useEffect(() => {
@@ -59,7 +59,11 @@ const Watch = () => {
               <div className="relative aspect-video w-full">
                 {(() => {
                   const cleanEp = String(currentEpisode).split(':')[0];
-                  const generatedUrl = `${activeServer.url}${id}/${cleanEp}`;
+                  
+                  const generatedUrl = activeServer.id === 'seekstreaming'
+                    ? activeServer.url
+                    : `${activeServer.url}${id}/${cleanEp}`;
+                    
                   const src = customAffiliateUrl || generatedUrl;
                   
                   return (
