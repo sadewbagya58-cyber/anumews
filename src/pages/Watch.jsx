@@ -5,7 +5,7 @@ import { fetchAnimeDetails } from '../services/jikanApi';
 const SERVERS = [
   { name: 'Server 1 (Primary)', id: 'vidsrc.to', url: 'https://vidsrc.to/embed/anime/' },
   { name: 'Server 2 (High Speed)', id: 'vidsrc.xyz', url: 'https://vidsrc.xyz/embed/anime/' },
-  { name: 'Server 3 (SeekStreaming Affiliate)', id: 'seekstreaming', url: 'https://play.anumews.seekplays.online/#jmnqj' },
+  { name: 'Server 3 (SeekStreaming Affiliate)', id: 'seekstreaming', url: 'https://play.anumews.seekplays.online/embed/oyhcb' },
   { name: 'Server 4 (Backup)', id: 'anyembed.to', url: 'https://anyembed.to/embed/anime/' },
 ];
 
